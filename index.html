@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EMCEE Building Services | Commercial Janitorial and Building Services, Chicago</title>
+<meta name="description" content="Commercial janitorial, floor care, carpet cleaning, window washing and building maintenance for Chicago and the surrounding suburbs. Owner on every job since 2010. Free quotes.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="img/emcee-logo.svg">
+<link rel="preload" href="fonts/newsreader-normal-300-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/roboto-variable.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Newsreader';font-style:normal;font-weight:300 800;font-display:swap;src:url('fonts/newsreader-normal-300-800.woff2') format('woff2')}
+@font-face{font-family:'Newsreader';font-style:italic;font-weight:300 800;font-display:swap;src:url('fonts/newsreader-italic-300-800.woff2') format('woff2')}
+@font-face{font-family:'Roboto';font-style:normal;font-weight:100 900;font-display:swap;src:url('fonts/roboto-variable.woff2') format('woff2')}
+
+:root{
+  --navy:#052663;
+  --navy-deep:#031a45;
+  --navy-ink:#021233;
+  --ink:#0b1220;
+  --muted:#4b5563;
+  --paper:#f2f4f7;
+  --paper-2:#e4e8ee;
+  --white:#ffffff;
+  --gold:#85620a;
+  --gold-soft:#e3b94a;
+  --rule:rgba(5,38,99,.14);
+  --rule-strong:rgba(5,38,99,.28);
+  --rule-light:rgba(255,255,255,.18);
+  --error:#b91c1c;
+  --display:'Newsreader',Georgia,'Times New Roman',serif;
+  --body:'Roboto',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --wrap:1240px;
+  --gutter:clamp(20px,4vw,48px);
+  --sec:clamp(4.5rem,3.2rem + 5vw,8.5rem);
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--body);font-size:1rem;line-height:1.6;font-weight:400;overflow-x:clip}
+@media (min-width:768px){body{font-size:1.0625rem}}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+h1,h2,h3,p,ul,ol,dl,dd,figure{margin:0}
+ul,ol{padding:0;list-style:none}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
+.sec{padding-block:var(--sec)}
+.sec-paper{background:var(--paper)}
+.sec-navy{background:var(--navy-deep);color:var(--white)}
+
+.display{font-family:var(--display);font-weight:500;letter-spacing:-.02em;font-optical-sizing:auto}
+h1.display{font-size:clamp(2.9rem,1.9rem + 4vw,5.5rem);line-height:.98}
+h2.display{font-size:clamp(2.1rem,1.5rem + 2.6vw,3.9rem);line-height:1.02;max-width:16ch}
+h2.display.wide{max-width:22ch}
+h3.display{font-size:clamp(1.35rem,1.15rem + .7vw,1.75rem);line-height:1.15;font-weight:500}
+.display em{font-style:italic;font-weight:400;color:var(--navy)}
+.sec-navy .display em{color:var(--gold-soft)}
+.lead{font-size:clamp(1.0625rem,1rem + .35vw,1.25rem);line-height:1.55;color:var(--muted);max-width:52ch}
+.sec-navy .lead{color:rgba(255,255,255,.78)}
+.label{font-family:var(--body);font-size:.75rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.sec-navy .label{color:rgba(255,255,255,.6)}
+.statement{font-family:var(--display);font-weight:400;font-size:clamp(1.5rem,1.1rem + 1.7vw,2.6rem);line-height:1.22;letter-spacing:-.01em;color:var(--navy)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:54px;padding:0 1.6rem;border-radius:4px;border:1px solid var(--navy);background:var(--navy);color:var(--white);font-weight:500;font-size:1rem;cursor:pointer;transition:background-color .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease);white-space:nowrap}
+.btn:hover{background:var(--navy-deep);border-color:var(--navy-deep)}
+.btn-ghost{background:transparent;color:var(--navy)}
+.btn-ghost:hover{background:var(--navy);color:var(--white)}
+.btn-white{background:var(--white);border-color:var(--white);color:var(--navy)}
+.btn-white:hover{background:var(--paper);border-color:var(--paper)}
+.btn-ghost-white{background:transparent;border-color:rgba(255,255,255,.4);color:var(--white)}
+.btn-ghost-white:hover{background:var(--white);border-color:var(--white);color:var(--navy)}
+.btn-sm{min-height:44px;padding:0 1.15rem;font-size:.9375rem}
+.btn svg{width:18px;height:18px;flex:none}
+.textlink{display:inline-flex;align-items:center;gap:.45rem;font-weight:500;color:var(--navy);border-bottom:1px solid var(--rule-strong);padding-bottom:2px;transition:border-color .2s var(--ease);cursor:pointer}
+.textlink:hover{border-color:var(--navy)}
+.textlink svg{width:16px;height:16px;transition:transform .25s var(--ease)}
+.textlink:hover svg{transform:translateX(3px)}
+.sec-navy .textlink{color:var(--white);border-color:rgba(255,255,255,.35)}
+.sec-navy .textlink:hover{border-color:var(--white)}
+.actions{display:flex;flex-wrap:wrap;gap:.75rem}
+@media (max-width:639px){.actions .btn{width:100%}}
+h1,h2,h3{text-wrap:balance}
+
+.stars{display:inline-flex;gap:3px;vertical-align:middle}
+.stars svg{width:18px;height:18px;fill:var(--gold-soft)}
+.stars.sm svg{width:14px;height:14px}
+.sec-navy .stars svg{fill:var(--gold-soft)}
+
+figure.photo{position:relative;overflow:hidden;border-radius:4px;background:var(--paper-2)}
+figure.photo img{width:100%;height:100%;object-fit:cover}
+figure.photo figcaption{position:absolute;left:10px;bottom:10px;font-size:.625rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.9);background:rgba(2,18,51,.55);padding:3px 7px;border-radius:2px;pointer-events:none}
+
+/* Header */
+.site-header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.96);border-bottom:1px solid var(--rule)}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:64px}
+@media (min-width:1024px){.site-header .wrap{height:76px}}
+.brand img{height:34px;width:auto}
+@media (min-width:1024px){.brand img{height:40px}}
+.nav{display:none;gap:.25rem}
+.nav a{padding:.5rem .8rem;font-size:.9375rem;font-weight:500;color:var(--muted);border-radius:3px;transition:color .2s var(--ease)}
+.nav a:hover{color:var(--navy)}
+.hdr-actions{display:flex;align-items:center;gap:.75rem}
+.hdr-phone{display:none;font-weight:500;color:var(--navy);padding:.5rem .4rem}
+.hdr-cta{display:none}
+@media (min-width:640px){.hdr-cta{display:inline-flex}}
+@media (min-width:768px){.hdr-phone{display:inline-block}}
+@media (min-width:1024px){.nav{display:flex}}
+.menu-btn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--rule-strong);border-radius:4px;background:transparent;cursor:pointer;color:var(--navy)}
+.menu-btn svg{width:22px;height:22px}
+@media (min-width:1024px){.menu-btn{display:none}}
+.menu{position:fixed;inset:0;z-index:50;background:var(--navy-deep);color:var(--white);display:flex;flex-direction:column;padding:1rem var(--gutter) 2rem;transform:translateY(-6px);opacity:0;visibility:hidden;transition:opacity .25s var(--ease),transform .25s var(--ease),visibility 0s .25s}
+.menu.open{opacity:1;visibility:visible;transform:none;transition:opacity .25s var(--ease),transform .25s var(--ease)}
+.menu-top{display:flex;align-items:center;justify-content:space-between;height:48px}
+.menu-top .brand{background:var(--white);padding:6px 10px;border-radius:3px}
+.menu-close{width:44px;height:44px;border:1px solid rgba(255,255,255,.35);border-radius:4px;background:transparent;color:var(--white);display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.menu-close svg{width:22px;height:22px}
+.menu nav{display:flex;flex-direction:column;margin-top:2.5rem;border-top:1px solid var(--rule-light)}
+.menu nav a{font-family:var(--display);font-size:2rem;font-weight:500;letter-spacing:-.01em;padding:.85rem 0;border-bottom:1px solid var(--rule-light)}
+.menu-foot{margin-top:auto;display:flex;flex-direction:column;gap:.75rem;padding-top:2rem}
+.menu-foot .label{color:rgba(255,255,255,.6)}
+.menu-foot .tel{font-family:var(--display);font-size:1.6rem;color:var(--white)}
+
+/* Hero */
+.hero{background:var(--paper);padding-top:clamp(3rem,2rem + 4vw,6rem);padding-bottom:clamp(3.5rem,2rem + 5vw,7rem)}
+.hero-grid{display:grid;gap:2.5rem}
+.hero-copy{display:flex;flex-direction:column;gap:1.75rem}
+@media (max-width:1023px){.hero-copy{max-width:40rem}}
+@media (min-width:1024px){
+  .hero{padding:0}
+  .hero-grid{grid-template-columns:minmax(0,60%) minmax(0,40%);gap:0;max-width:none;padding:0;align-items:stretch;height:calc(100svh - 76px);min-height:560px;max-height:860px}
+  .hero-copy{padding:2.5rem clamp(2.5rem,4vw,5rem) 2.5rem max(var(--gutter),calc((100vw - var(--wrap)) / 2 + var(--gutter)));justify-content:center}
+  .hero-copy > *{max-width:44rem}
+  .hero-fig{border-radius:0}
+}
+@media (min-width:1024px) and (max-height:800px){
+  h1.display{font-size:clamp(2.4rem,1.4rem + 3.4vw,4.4rem)}
+  .hero-copy{gap:1.2rem}
+  .hero-copy .lead{font-size:1.0625rem}
+}
+.hero-copy .label{color:var(--navy)}
+.hero-copy h1{color:var(--ink)}
+.hero-proof{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .75rem;padding-top:1.5rem;border-top:1px solid var(--rule);font-size:.9375rem;color:var(--muted)}
+.hero-proof strong{color:var(--ink);font-weight:500}
+.hero-proof .proof-more{flex-basis:100%}
+@media (min-width:640px){.hero-proof .proof-more{flex-basis:auto;padding-left:.9rem;border-left:1px solid var(--rule-strong)}}
+.hero-fig{aspect-ratio:4/3}
+@media (min-width:1024px){.hero-fig{aspect-ratio:auto;height:100%}}
+.hero-fig img{object-position:50% 22%}
+
+/* Statement */
+.statement-wrap{display:grid;gap:1.5rem}
+@media (min-width:1024px){.statement-wrap{grid-template-columns:2fr 10fr}}
+.statement-wrap .label{padding-top:.6rem}
+.statement-wrap p{max-width:30ch}
+
+/* Services */
+.svc-head{display:grid;gap:1.25rem;margin-bottom:clamp(2rem,1.5rem + 2.5vw,3.5rem)}
+@media (min-width:1024px){.svc-head{grid-template-columns:7fr 5fr;align-items:end}.svc-head .lead{justify-self:end}}
+.svc-cards{display:grid;gap:1.25rem}
+@media (min-width:640px){.svc-cards{grid-template-columns:1fr 1fr;gap:1.5rem}}
+@media (min-width:1024px){.svc-cards{grid-template-columns:repeat(4,1fr);gap:1.5rem}}
+.svc-card-link{display:flex;flex-direction:column;height:100%;background:var(--white);border:1px solid var(--rule);border-radius:10px;overflow:hidden;transition:border-color .25s var(--ease),transform .35s var(--ease),box-shadow .35s var(--ease)}
+.svc-card-link:hover,.svc-card-link:focus-visible{border-color:var(--rule-strong);transform:translateY(-4px);box-shadow:0 18px 34px -20px rgba(5,38,99,.4)}
+.svc-card-fig{aspect-ratio:4/3;border-radius:0;background:var(--paper-2)}
+.svc-card-fig img{transition:transform .7s var(--ease)}
+.svc-card-link:hover .svc-card-fig img{transform:scale(1.04)}
+.svc-card-body{padding:1.25rem 1.35rem 1.45rem;display:flex;flex-direction:column;gap:.45rem;flex:1}
+.svc-num{font-size:.75rem;font-weight:500;letter-spacing:.12em;color:var(--navy)}
+.svc-title{font-family:var(--display);font-weight:500;font-size:1.5rem;line-height:1.12;letter-spacing:-.01em;color:var(--ink)}
+.svc-desc{color:var(--muted);font-size:.9375rem;line-height:1.55;flex:1}
+.svc-more{display:inline-flex;align-items:center;gap:.4rem;font-weight:500;font-size:.9rem;color:var(--navy);margin-top:.6rem}
+.svc-more svg{width:16px;height:16px;transition:transform .25s var(--ease)}
+.svc-card-link:hover .svc-more svg{transform:translateX(3px)}
+.svc-card-cta .svc-card-link{background:var(--navy);border-color:var(--navy);color:var(--white)}
+.svc-card-cta .svc-card-link:hover{background:var(--navy-deep);border-color:var(--navy-deep)}
+.svc-card-cta .svc-card-body{padding:1.75rem 1.5rem;justify-content:flex-end;min-height:240px}
+.svc-card-cta .svc-num,.svc-card-cta .svc-title,.svc-card-cta .svc-more{color:var(--white)}
+.svc-card-cta .svc-desc{color:rgba(255,255,255,.72)}
+.svc-card-cta .svc-title{font-size:1.9rem}
+@media (min-width:1024px){.svc-card-cta .svc-card-body{min-height:0}}
+.svc-foot{margin-top:2rem;display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1.5rem;color:var(--muted);font-size:.9375rem}
+
+/* How it works */
+.how-grid{display:grid;gap:2.5rem}
+@media (min-width:1024px){.how-grid{grid-template-columns:5fr 7fr;gap:clamp(2.5rem,5vw,6rem)}}
+.how-intro{display:flex;flex-direction:column;gap:1.5rem}
+.steps{border-top:1px solid var(--rule-strong)}
+.step{display:grid;grid-template-columns:3.5rem 1fr;gap:.25rem 1rem;padding:1.75rem 0;border-bottom:1px solid var(--rule)}
+@media (min-width:768px){.step{grid-template-columns:5rem 1fr;padding:2.25rem 0}}
+.step-num{font-family:var(--display);font-weight:300;font-size:clamp(2.2rem,1.8rem + 1.5vw,3.4rem);line-height:.9;color:var(--navy);grid-row:span 2}
+.step p{color:var(--muted);max-width:50ch;margin-top:.5rem}
+
+/* Band */
+.band{position:relative;height:clamp(300px,42vw,580px);overflow:hidden;background:var(--navy-deep)}
+.band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%}
+.band::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,18,51,0) 35%,rgba(2,18,51,.72) 100%)}
+.band .wrap{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:clamp(1.75rem,3vw,3rem);color:var(--white)}
+.band .statement{color:var(--white);max-width:22ch}
+.band .cap{position:absolute;right:var(--gutter);bottom:1rem;font-size:.625rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+
+/* Why */
+.why-grid{display:grid;gap:2.5rem}
+@media (min-width:768px){.why-grid{grid-template-columns:5fr 7fr;gap:clamp(2rem,4vw,6rem);align-items:center}}
+@media (min-width:1024px){.why-grid{grid-template-columns:6fr 6fr}}
+.why-fig{aspect-ratio:4/3}
+.why-copy{display:flex;flex-direction:column;gap:1.5rem}
+.why-copy .owner{font-family:var(--display);font-size:1.25rem;color:var(--navy)}
+.why-copy .owner span{display:block;font-family:var(--body);font-size:.8125rem;color:var(--muted);letter-spacing:.04em;margin-top:.15rem}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:0 1.5rem;margin-top:.5rem}
+.facts div{border-top:1px solid var(--rule-strong);padding:1.1rem 0 1.25rem}
+.facts dt{font-family:var(--display);font-size:1.3rem;font-weight:500;line-height:1.15;color:var(--ink)}
+.facts dd{color:var(--muted);font-size:.9375rem;margin-top:.35rem;max-width:26ch}
+
+/* Reviews */
+.rev-head{display:grid;gap:2rem;margin-bottom:clamp(2.5rem,2rem + 3vw,4.5rem)}
+@media (min-width:768px){.rev-head{grid-template-columns:5fr 7fr;align-items:end}}
+.rev-score{display:flex;flex-direction:column;gap:.75rem}
+.rev-score .big{font-family:var(--display);font-weight:400;font-size:clamp(5rem,4rem + 5vw,9rem);line-height:.85;letter-spacing:-.04em;color:var(--navy)}
+.rev-score .meta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .9rem;color:var(--muted);font-size:.9375rem}
+.rev-grid{display:grid;gap:1.25rem}
+@media (min-width:768px){.rev-grid{display:block;columns:2;column-gap:1.5rem}.rev-grid .review{break-inside:avoid;margin-bottom:1.5rem}}
+.review{background:var(--white);border:1px solid var(--rule);border-radius:4px;padding:clamp(1.5rem,1.2rem + 1.2vw,2.25rem);display:flex;flex-direction:column;gap:1.25rem}
+.review blockquote{margin:0;font-size:1.0625rem;line-height:1.6;color:var(--ink)}
+.review blockquote p + p{margin-top:.75rem}
+.review footer{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:auto;padding-top:1.1rem;border-top:1px solid var(--rule)}
+.review cite{font-style:normal;font-weight:500;color:var(--ink)}
+.review cite span{display:block;font-weight:400;font-size:.8125rem;color:var(--muted)}
+
+/* Quote */
+.quote-grid{display:grid;gap:2.5rem}
+@media (min-width:1024px){.quote-grid{grid-template-columns:5fr 7fr;gap:clamp(2.5rem,5vw,6rem);align-items:start}}
+.quote-intro{display:flex;flex-direction:column;gap:1.5rem}
+.contact-list{display:flex;flex-direction:column;border-top:1px solid var(--rule-light);margin-top:.5rem}
+.contact-list div{display:grid;grid-template-columns:7rem 1fr;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--rule-light)}
+.contact-list dt{font-size:.75rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6);padding-top:.3rem}
+.contact-list dd{font-size:1.0625rem;color:var(--white)}
+.contact-list dd a{border-bottom:1px solid rgba(255,255,255,.35)}
+.contact-list dd a:hover{border-color:var(--white)}
+.contact-list dd small{display:block;color:rgba(255,255,255,.65);font-size:.9rem;margin-top:.2rem}
+.form{background:rgba(255,255,255,.04);border:1px solid var(--rule-light);border-radius:6px;padding:clamp(1.25rem,1rem + 1.5vw,2.25rem)}
+.form-grid{display:grid;gap:1.1rem}
+@media (min-width:640px){.form-grid{grid-template-columns:1fr 1fr}.span2{grid-column:1 / -1}}
+.field label{display:block;font-size:.75rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:.45rem}
+.field input,.field select,.field textarea{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.22);border-radius:4px;color:var(--white);padding:.85rem 1rem;font-size:1rem;outline:none;transition:border-color .2s var(--ease),background-color .2s var(--ease)}
+.field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,.4)}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold-soft);background:rgba(255,255,255,.1)}
+.field select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.75rem;cursor:pointer}
+.field select option{color:var(--ink);background:var(--white)}
+.field textarea{resize:vertical;min-height:120px}
+.field .err{display:none;margin:.4rem 0 0;font-size:.8125rem;color:#fca5a5;font-weight:500}
+.field.invalid .err{display:block}
+.field.invalid input,.field.invalid select{border-color:#f87171}
+.form .btn{width:100%;margin-top:1.25rem;min-height:56px;font-size:1.0625rem}
+.form-note{margin-top:.9rem;font-size:.8125rem;color:rgba(255,255,255,.55);text-align:center}
+.thanks{text-align:center;padding:2rem 0;display:flex;flex-direction:column;align-items:center;gap:1rem}
+.thanks .tick{width:60px;height:60px;border-radius:50%;background:var(--white);color:var(--navy);display:grid;place-items:center}
+.thanks .tick svg{width:28px;height:28px}
+.thanks h3{font-family:var(--display);font-size:2rem;font-weight:500;color:var(--white)}
+.thanks p{color:rgba(255,255,255,.75);max-width:32ch}
+.thanks p a{color:var(--white);border-bottom:1px solid rgba(255,255,255,.4)}
+
+/* FAQ */
+.faq-grid{display:grid;gap:2.5rem}
+@media (min-width:1024px){.faq-grid{grid-template-columns:4fr 8fr;gap:clamp(2.5rem,5vw,6rem)}}
+.faq-intro{display:flex;flex-direction:column;gap:1.25rem}
+.faq{border-top:1px solid var(--rule-strong)}
+.faq details{border-bottom:1px solid var(--rule)}
+.faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:1.25rem 0;font-family:var(--display);font-size:clamp(1.15rem,1rem + .6vw,1.5rem);font-weight:500;line-height:1.25;color:var(--ink);transition:color .2s var(--ease)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover{color:var(--navy)}
+.faq summary .plus{position:relative;flex:none;width:28px;height:28px;border:1px solid var(--rule-strong);border-radius:50%;transition:background-color .2s var(--ease),border-color .2s var(--ease)}
+.faq summary .plus::before,.faq summary .plus::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.5px;background:var(--navy);transform:translate(-50%,-50%);transition:transform .25s var(--ease),background-color .2s var(--ease)}
+.faq summary .plus::after{transform:translate(-50%,-50%) rotate(90deg)}
+.faq details[open] summary .plus{background:var(--navy);border-color:var(--navy)}
+.faq details[open] summary .plus::before,.faq details[open] summary .plus::after{background:var(--white)}
+.faq details[open] summary .plus::after{transform:translate(-50%,-50%) rotate(0deg)}
+.faq .ans{padding:0 3.25rem 1.5rem 0;color:var(--muted);max-width:60ch}
+
+/* Area + CTA */
+.area-grid{display:grid;gap:2rem}
+@media (min-width:768px){.area-grid{grid-template-columns:7fr 5fr;gap:clamp(2.5rem,5vw,6rem);align-items:end}}
+.area-copy{display:flex;flex-direction:column;gap:1.25rem}
+.area-list{display:flex;flex-direction:column;border-top:1px solid var(--rule-strong)}
+.area-list div{display:grid;grid-template-columns:6.5rem 1fr;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--rule)}
+.area-list dt{font-size:.75rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding-top:.3rem}
+.area-list dd{font-size:1.0625rem}
+.area-list dd a{color:var(--navy);border-bottom:1px solid var(--rule-strong)}
+.area-list dd a:hover{border-color:var(--navy)}
+.cta{text-align:left}
+.cta-grid{display:grid;gap:2rem}
+@media (min-width:1024px){.cta-grid{grid-template-columns:8fr 4fr;align-items:end}}
+.cta h2{max-width:14ch}
+.cta .actions{justify-content:flex-start}
+@media (min-width:1024px){.cta .actions{justify-content:flex-end}}
+
+/* Footer */
+.site-footer{border-top:1px solid var(--rule);padding:3.5rem 0 2rem}
+.foot-grid{display:grid;gap:2.5rem}
+@media (min-width:768px){.foot-grid{grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:2rem}}
+.foot-brand{display:flex;flex-direction:column;gap:1.25rem;align-items:flex-start}
+.foot-brand img{height:40px;width:auto}
+.foot-brand p{color:var(--muted);font-size:.9375rem;max-width:34ch}
+.foot-col .label{display:block;margin-bottom:1rem;color:var(--ink)}
+.foot-col ul{display:flex;flex-direction:column;gap:.5rem}
+.foot-col a,.foot-col li{color:var(--muted);font-size:.9375rem}
+.foot-col a:hover{color:var(--navy)}
+.foot-col address{font-style:normal}
+.foot-bottom{margin-top:3rem;padding-top:1.25rem;border-top:1px solid var(--rule);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.75rem 1.5rem;font-size:.8125rem;color:var(--muted)}
+.foot-bottom .credit{display:inline-flex;align-items:center;gap:.6rem}
+.tag{display:inline-block;font-size:.625rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--rule-strong);color:var(--navy);padding:2px 7px;border-radius:2px}
+
+/* Mobile bar */
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:35;background:rgba(255,255,255,.96);border-top:1px solid var(--rule);padding:.6rem var(--gutter) calc(.6rem + env(safe-area-inset-bottom));display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.mbar .btn{min-height:50px;font-size:.95rem}
+@media (min-width:768px){.mbar{display:none}}
+@media (max-width:767px){body{padding-bottom:84px}}
+section[id]{scroll-margin-top:76px}
+
+/* Motion */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  *{transition-duration:.01ms!important;animation-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<a class="sr-only" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="EMCEE Building Services, home">
+      <img src="img/emcee-logo.svg" alt="EMCEE Building Services" width="1992" height="636">
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#how">How it works</a>
+      <a href="#why">Why EMCEE</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="hdr-actions">
+      <a class="hdr-phone" href="tel:+12243851339">(224) 385-1339</a>
+      <a class="btn btn-sm hdr-cta" href="#quote">Get a Free Quote</a>
+      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <div class="menu-top">
+    <span class="brand"><img src="img/emcee-logo.svg" alt="EMCEE Building Services" width="1992" height="636"></span>
+    <button class="menu-close" type="button" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+  <nav aria-label="Mobile">
+    <a href="#services">Services</a>
+    <a href="#how">How it works</a>
+    <a href="#why">Why EMCEE</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#faq">FAQ</a>
+    <a href="#area">Service area</a>
+  </nav>
+  <div class="menu-foot">
+    <span class="label">Call or text</span>
+    <a class="tel" href="tel:+12243851339">(224) 385-1339</a>
+    <a class="btn btn-white" href="#quote">Get a Free Quote</a>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- Hero -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="label">Commercial janitorial and building services, Chicago</span>
+      <h1 class="display">A building that <em>always</em> looks its best.</h1>
+      <p class="lead">Janitorial, floor care, carpet cleaning, window washing and building maintenance for offices, property managers and HOAs. Owned and run by Bob Caramusa, who is involved in every job, with trained staff behind him.</p>
+      <div class="actions">
+        <a class="btn" href="#quote">Get a Free Quote</a>
+        <a class="btn btn-ghost" href="tel:+12243851339">Call (224) 385-1339</a>
+      </div>
+      <div class="hero-proof">
+        <span class="stars" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z"/></svg>
+          <svg viewBox="0 0 24 24"><defs><linearGradient id="g60"><stop offset="60%" stop-color="#e3b94a"/><stop offset="60%" stop-color="#d6d1c4"/></linearGradient></defs><path fill="url(#g60)" d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z"/></svg>
+        </span>
+        <span><strong>4.6</strong> from 11 Google reviews</span>
+        <span class="proof-more">Free quotes. Emergency service available.</span>
+      </div>
+    </div>
+    <figure class="photo hero-fig">
+      <img src="img/hero-1200.webp" srcset="img/hero-800.webp 800w, img/hero-1200.webp 1200w, img/hero-1800.webp 1800w, img/hero-2400.webp 2400w" sizes="(min-width:1024px) 40vw, 100vw" width="2400" height="3600" alt="A smiling cleaner in a black uniform holding a spray bottle" fetchpriority="high">
+      <figcaption>Sample photo</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- Statement -->
+<section class="sec">
+  <div class="wrap statement-wrap reveal">
+    <span class="label">Since 2010</span>
+    <p class="statement">Commercial janitorial and building services for Chicago and the surrounding suburbs. Small offices to large commercial buildings, scheduled daily, weekly, monthly or on demand, with the owner involved in every job.</p>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="sec sec-paper" id="services">
+  <div class="wrap">
+    <div class="svc-head reveal">
+      <h2 class="display">One team for every part of the building.</h2>
+      <p class="lead">Seven services and one point of contact, so you are not juggling three vendors for one property.</p>
+    </div>
+    <ul class="svc-cards">
+      <li class="svc-card reveal"><a class="svc-card-link" href="#quote">
+        <figure class="photo svc-card-fig"><img src="img/svc-janitorial-900.webp" srcset="img/svc-janitorial-600.webp 600w, img/svc-janitorial-900.webp 900w, img/svc-janitorial-1400.webp 1400w" sizes="(min-width:1024px) 300px, (min-width:640px) 50vw, 100vw" width="900" height="675" alt="A cleaning crew mopping and wiping down a bright modern office" loading="lazy"><figcaption>Sample photo</figcaption></figure>
+        <div class="svc-card-body"><span class="svc-num">01</span><h3 class="svc-title">Janitorial services</h3><p class="svc-desc">Daily, weekly or monthly cleaning that keeps your workplace clean, safe and welcoming.</p><span class="svc-more">Get a quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </a></li>
+      <li class="svc-card reveal"><a class="svc-card-link" href="#quote">
+        <figure class="photo svc-card-fig"><img src="img/svc-floor-900.webp" srcset="img/svc-floor-600.webp 600w, img/svc-floor-900.webp 900w, img/svc-floor-1400.webp 1400w" sizes="(min-width:1024px) 300px, (min-width:640px) 50vw, 100vw" width="900" height="675" alt="A worker running a rotary floor machine at a building entrance" loading="lazy"><figcaption>Sample photo</figcaption></figure>
+        <div class="svc-card-body"><span class="svc-num">02</span><h3 class="svc-title">Floor care and maintenance</h3><p class="svc-desc">Stripping, waxing, buffing and sealing to protect your floors.</p><span class="svc-more">Get a quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </a></li>
+      <li class="svc-card reveal"><a class="svc-card-link" href="#quote">
+        <figure class="photo svc-card-fig"><img src="img/svc-carpet-900.webp" srcset="img/svc-carpet-600.webp 600w, img/svc-carpet-900.webp 900w, img/svc-carpet-1400.webp 1400w" sizes="(min-width:1024px) 300px, (min-width:640px) 50vw, 100vw" width="900" height="675" alt="A worker in a high-visibility vest cleaning a blue carpet" loading="lazy"><figcaption>Sample photo</figcaption></figure>
+        <div class="svc-card-body"><span class="svc-num">03</span><h3 class="svc-title">Carpet cleaning</h3><p class="svc-desc">Removes stains and odors and helps extend the life of your carpet.</p><span class="svc-more">Get a quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </a></li>
+      <li class="svc-card reveal"><a class="svc-card-link" href="#quote">
+        <figure class="photo svc-card-fig"><img src="img/svc-window-900.webp" srcset="img/svc-window-600.webp 600w, img/svc-window-900.webp 900w, img/svc-window-1400.webp 1400w" sizes="(min-width:1024px) 300px, (min-width:640px) 50vw, 100vw" width="900" height="675" alt="Two window cleaners on ropes washing the glass of a curved office building" loading="lazy"><figcaption>Sample photo</figcaption></figure>
+        <div class="svc-card-body"><span class="svc-num">04</span><h3 class="svc-title">Commercial window washing</h3><p class="svc-desc">Spotless windows for commercial buildings, big or small.</p><span class="svc-more">Get a quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </a></li>
+      <li class="svc-card reveal"><a class="svc-card-link" href="#quote">
+        <figure class="photo svc-card-fig"><img src="img/svc-maintenance-900.webp" srcset="img/svc-maintenance-600.webp 600w, img/svc-maintenance-900.webp 900w, img/svc-maintenance-1400.webp 1400w" sizes="(min-width:1024px) 300px, (min-width:640px) 50vw, 100vw" width="900" height="675" alt="A worker pressure washing stone steps outside a building" loading="lazy"><figcaption>Sample photo</figcaption></figure>
+        <div class="svc-card-body"><span class="svc-num">05</span><h3 class="svc-title">Building maintenance</h3><p class="svc-desc">Power washing, caulking, sealing and preventive maintenance.</p><span class="svc-more">Get a quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </a></li>
+      <li class="svc-card reveal"><a class="svc-card-link" href="#quote">
+        <figure class="photo svc-card-fig"><img src="img/svc-security-900.webp" srcset="img/svc-security-600.webp 600w, img/svc-security-900.webp 900w, img/svc-security-1400.webp 1400w" sizes="(min-width:1024px) 300px, (min-width:640px) 50vw, 100vw" width="900" height="675" alt="Two smiling security officers in high-visibility vests at a building entrance" loading="lazy"><figcaption>Sample photo</figcaption></figure>
+        <div class="svc-card-body"><span class="svc-num">06</span><h3 class="svc-title">Security services</h3><p class="svc-desc">Building and parking lot security, on-site personnel, access control and surveillance support.</p><span class="svc-more">Get a quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </a></li>
+      <li class="svc-card reveal"><a class="svc-card-link" href="#quote">
+        <figure class="photo svc-card-fig"><img src="img/svc-property-900.webp" srcset="img/svc-property-600.webp 600w, img/svc-property-900.webp 900w, img/svc-property-1400.webp 1400w" sizes="(min-width:1024px) 300px, (min-width:640px) 50vw, 100vw" width="900" height="675" alt="Hands using a cordless drill to repair a window frame" loading="lazy"><figcaption>Sample photo</figcaption></figure>
+        <div class="svc-card-body"><span class="svc-num">07</span><h3 class="svc-title">Light property maintenance</h3><p class="svc-desc">Minor repairs and seasonal upkeep that stop small issues from becoming big problems.</p><span class="svc-more">Get a quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </a></li>
+      <li class="svc-card svc-card-cta reveal"><a class="svc-card-link" href="#quote">
+        <div class="svc-card-body"><span class="svc-num">08</span><h3 class="svc-title">Something not on the list?</h3><p class="svc-desc">Tell us what the building needs and we will quote it. Free, no obligation.</p><span class="svc-more">Get a Free Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </a></li>
+    </ul>
+    <div class="svc-foot reveal">
+      <p>Scheduled daily, weekly, monthly or on demand. Emergency service available.</p>
+      <a class="textlink" href="tel:+12243851339">Call or text (224) 385-1339</a>
+    </div>
+  </div>
+</section>
+
+<!-- How it works -->
+<section class="sec" id="how">
+  <div class="wrap how-grid">
+    <div class="how-intro reveal">
+      <h2 class="display">From first call to a cleaner building in <em>three</em> steps.</h2>
+      <p class="lead">No pressure and no surprise add-ons. A clear scope, a clear price and a schedule that fits how the building operates.</p>
+      <div class="actions">
+        <a class="btn" href="#quote">Get a Free Quote</a>
+        <a class="btn btn-ghost" href="tel:+12243851339">Call (224) 385-1339</a>
+      </div>
+    </div>
+    <ol class="steps reveal">
+      <li class="step">
+        <span class="step-num" aria-hidden="true">1</span>
+        <h3 class="display">Tell us about the building</h3>
+        <p>Call, text or send the quote form with the building type, the size and what needs attention. It takes a minute.</p>
+      </li>
+      <li class="step">
+        <span class="step-num" aria-hidden="true">2</span>
+        <h3 class="display">Get a free quote</h3>
+        <p>We review the details and come back with a clear scope and price. No obligation.</p>
+      </li>
+      <li class="step">
+        <span class="step-num" aria-hidden="true">3</span>
+        <h3 class="display">We build the schedule</h3>
+        <p>Daily, weekly, monthly or on demand, with the owner involved in every job and trained staff on site.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- Band -->
+<div class="band" role="img" aria-label="A bright planted atrium inside a modern commercial building">
+  <img src="img/band-1400.webp" srcset="img/band-800.webp 800w, img/band-1400.webp 1400w, img/band-1800.webp 1800w" sizes="100vw" width="1800" height="1202" alt="" loading="lazy">
+  <div class="wrap">
+    <p class="statement">Small offices to large commercial buildings.</p>
+  </div>
+  <span class="cap">Sample photo</span>
+</div>
+
+<!-- Why -->
+<section class="sec" id="why">
+  <div class="wrap why-grid">
+    <figure class="photo why-fig reveal">
+      <img src="img/team-1200.webp" srcset="img/team-800.webp 800w, img/team-1200.webp 1200w, img/team-1800.webp 1800w" sizes="(min-width:1024px) 560px, 100vw" width="1200" height="900" alt="Three cleaners in orange overalls standing with their equipment in a bright living room" loading="lazy">
+      <figcaption>Sample photo</figcaption>
+    </figure>
+    <div class="why-copy reveal">
+      <h2 class="display">One owner who answers for the work.</h2>
+      <p class="lead">For property managers, HOAs and office managers, the risk with a cleaning vendor is the gap between what was promised and what gets done. EMCEE was built to close that gap.</p>
+      <p class="owner">Bob Caramusa <span>Owner and President</span></p>
+      <dl class="facts">
+        <div><dt>Owner on every job</dt><dd>Bob is involved in every job, not just the first visit.</dd></div>
+        <div><dt>Since 2010</dt><dd>Serving Chicago and the surrounding suburbs.</dd></div>
+        <div><dt>Trained staff</dt><dd>The work is done the same way every time.</dd></div>
+        <div><dt>Emergency service</dt><dd>Available when something cannot wait.</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section class="sec sec-paper" id="reviews">
+  <div class="wrap">
+    <div class="rev-head reveal">
+      <div class="rev-score">
+        <span class="big">4.6</span>
+        <div class="meta">
+          <span class="stars" aria-label="4.6 out of 5 stars">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="url(#g60)" d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z"/></svg>
+          </span>
+          <span>Google rating from 11 reviews</span>
+        </div>
+        <a class="textlink" href="https://www.google.com/maps/place/EMCEE+Building+Services/@41.9151098,-87.8056564,17z/data=!3m1!4b1!4m6!3m5!1s0xa14fd1fdd39e9ff1:0x217793738ca491a0!8m2!3d41.9151098!4d-87.8056564!16s%2Fg%2F11x0rg7bv4" target="_blank" rel="noopener">Read all reviews on Google <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+      </div>
+      <h2 class="display wide">In the words of the people who manage the buildings.</h2>
+    </div>
+
+    <div class="rev-grid">
+      <article class="review reveal">
+        <span class="stars sm" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z"/></svg></span>
+        <blockquote>
+          <p>EMCEE has been outstanding since I took on the management of a 196-unit homeowners association (HOA) in Chicago, IL. ... Bob and Mike Caramusa consistently provide valuable preventive maintenance strategies and actively embrace additional responsibilities. ... Any issues that arise are addressed swiftly and efficiently. EMCEE truly understands the critical role of preserving property values through preventive maintenance and strategic spending ...</p>
+          <p>I wholeheartedly recommend EMCEE to anyone seeking a reliable third-party vendor for their maintenance needs! Fantastic work, EMCEE!</p>
+        </blockquote>
+        <footer><cite>La Fenner <span>Google review</span></cite></footer>
+      </article>
+      <article class="review reveal">
+        <span class="stars sm" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z"/></svg></span>
+        <blockquote>
+          <p>Our HOA is 26 acres large (comprised of condominiums, townhomes and single-family homes) and have used Emcee Building Services for the last five years.</p>
+          <p>Emcee is very responsive, hardworking, always willing to go above and beyond to make sure the work gets done and to keep our property looking great. ... We highly recommend Emcee Building Services as we are very happy to have them servicing our property!</p>
+        </blockquote>
+        <footer><cite>University Village HOA <span>Google review</span></cite></footer>
+      </article>
+      <article class="review reveal">
+        <span class="stars sm" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z"/></svg></span>
+        <blockquote>
+          <p>We've been extremely impressed with the team at EMCEE Building Services! They provided top-notch janitorial and maintenance services for our property and were always professional, responsive, and detail-oriented. Their staff went above and beyond to ensure everything was done right ... It's clear they care about their clients and take pride in their work. Highly recommend them for anyone needing reliable building services!</p>
+        </blockquote>
+        <footer><cite>Joseph Scorpio <span>Google review</span></cite></footer>
+      </article>
+      <article class="review reveal">
+        <span class="stars sm" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z"/></svg></span>
+        <blockquote>
+          <p>Our 33 unit condo building association in University Village (Chicago) has been using EMCEE Building Services for a few years. The customer service, responsiveness, and technical knowledge by their staff is excellent. They do our weekly maintenance and all of our fixes around the building. Great service for a fair price. You can't go wrong with this company.</p>
+        </blockquote>
+        <footer><cite>Stipe Basic <span>Google review</span></cite></footer>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Quote -->
+<section class="sec sec-navy" id="quote">
+  <div class="wrap quote-grid">
+    <div class="quote-intro reveal">
+      <h2 class="display">Tell us about your building. We'll take it from there.</h2>
+      <p class="lead">Send a few details and we will come back with a clear quote. No pressure and no obligation. Prefer to talk? Call or text.</p>
+      <dl class="contact-list">
+        <div><dt>Call or text</dt><dd><a href="tel:+12243851339">(224) 385-1339</a></dd></div>
+        <div><dt>Office</dt><dd>1925 N Harlem Ave<br>Chicago, IL 60707</dd></div>
+        <div><dt>Service</dt><dd>Daily, weekly, monthly or on demand.<small>Emergency service available.</small></dd></div>
+      </dl>
+    </div>
+    <form class="form reveal" id="quote-form" novalidate>
+      <div class="form-grid">
+        <div class="field"><label for="q-name">Your name</label><input id="q-name" name="name" type="text" autocomplete="name" placeholder="Jane Smith" required><p class="err" id="q-name-err">Please enter your name.</p></div>
+        <div class="field"><label for="q-phone">Phone</label><input id="q-phone" name="phone" type="tel" autocomplete="tel" placeholder="(312) 555-0123" required><p class="err" id="q-phone-err">Please enter a phone number we can reach you on.</p></div>
+        <div class="field span2"><label for="q-email">Email</label><input id="q-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required><p class="err" id="q-email-err">Please enter a valid email address.</p></div>
+        <div class="field"><label for="q-type">Building type</label><select id="q-type" name="building_type" required><option value="">Select one</option><option>Office building</option><option>Condo or HOA association</option><option>Retail or restaurant</option><option>Medical or healthcare</option><option>Warehouse or industrial</option><option>Other commercial</option></select><p class="err" id="q-type-err">Please choose a building type.</p></div>
+        <div class="field"><label for="q-service">Service needed</label><select id="q-service" name="service" required><option value="">Select one</option><option>Janitorial services</option><option>Floor care and maintenance</option><option>Carpet cleaning</option><option>Commercial window washing</option><option>Building maintenance</option><option>Security services</option><option>Light property maintenance</option><option>Several services or not sure</option></select><p class="err" id="q-service-err">Please choose the service you need.</p></div>
+        <div class="field span2"><label for="q-details">Tell us about the job</label><textarea id="q-details" name="details" rows="4" placeholder="Approximate square footage, how often you would like service, and anything that needs special attention."></textarea></div>
+      </div>
+      <button class="btn btn-white" type="submit">Get My Free Quote</button>
+      <p class="form-note">Free, no-obligation quote. We only use your details to reply.</p>
+    </form>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq">
+  <div class="wrap faq-grid">
+    <div class="faq-intro reveal">
+      <h2 class="display">Straight answers before you book.</h2>
+      <p class="lead">Still unsure about something? Call or text and we will help you work out what the building needs.</p>
+      <a class="textlink" href="tel:+12243851339">(224) 385-1339</a>
+    </div>
+    <div class="faq reveal">
+      <details open>
+        <summary>What kinds of buildings do you clean?<span class="plus" aria-hidden="true"></span></summary>
+        <p class="ans">Office buildings, property managers, HOAs and condo associations, and owners of commercial buildings, from small offices up to large commercial properties.</p>
+      </details>
+      <details>
+        <summary>How often can you clean our building?<span class="plus" aria-hidden="true"></span></summary>
+        <p class="ans">Service is scheduled daily, weekly or monthly, or on demand. When we quote, we build the schedule around how the building operates.</p>
+      </details>
+      <details>
+        <summary>Is the quote really free?<span class="plus" aria-hidden="true"></span></summary>
+        <p class="ans">Yes. Quotes are free and there is no obligation. Tell us about the building and what needs doing, and we will come back with a clear scope and price.</p>
+      </details>
+      <details>
+        <summary>Can you handle an urgent or one-off job?<span class="plus" aria-hidden="true"></span></summary>
+        <p class="ans">Emergency service is available. Call or text (224) 385-1339 and we will tell you what we can do and how soon.</p>
+      </details>
+      <details>
+        <summary>Do you only do janitorial work?<span class="plus" aria-hidden="true"></span></summary>
+        <p class="ans">No. Alongside janitorial services we handle floor care, carpet cleaning, commercial window washing, building maintenance, security services and light property maintenance. One team for the whole building.</p>
+      </details>
+      <details>
+        <summary>Is the owner actually involved?<span class="plus" aria-hidden="true"></span></summary>
+        <p class="ans">Yes. Bob Caramusa, Owner and President, is involved in every job, with trained staff doing the work.</p>
+      </details>
+      <details>
+        <summary>Where do you work?<span class="plus" aria-hidden="true"></span></summary>
+        <p class="ans">Chicago and the surrounding suburbs. Our office is at 1925 N Harlem Ave, Chicago, IL 60707.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- Area -->
+<section class="sec sec-paper" id="area">
+  <div class="wrap area-grid">
+    <div class="area-copy reveal">
+      <h2 class="display">Chicago and the surrounding suburbs.</h2>
+      <p class="lead">We serve commercial buildings across Chicago and the nearby suburbs. If your building is in the area, or just outside it, call and we will tell you straight away.</p>
+    </div>
+    <dl class="area-list reveal">
+      <div><dt>Office</dt><dd>1925 N Harlem Ave, Chicago, IL 60707</dd></div>
+      <div><dt>Call or text</dt><dd><a href="tel:+12243851339">(224) 385-1339</a></dd></div>
+      <div><dt>Service</dt><dd>Daily, weekly, monthly or on demand. Emergency service available.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="sec sec-navy cta">
+  <div class="wrap cta-grid">
+    <h2 class="display reveal">Ready for a building that is clean the way it <em>should</em> be?</h2>
+    <div class="actions reveal">
+      <a class="btn btn-white" href="#quote">Get a Free Quote</a>
+      <a class="btn btn-ghost-white" href="tel:+12243851339">Call (224) 385-1339</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img src="img/emcee-logo.svg" alt="EMCEE Building Services" width="1992" height="636">
+        <p>Commercial janitorial and building services in Chicago and the surrounding suburbs since 2010. Owned and run by Bob Caramusa.</p>
+        <a class="textlink" href="tel:+12243851339">Call or text (224) 385-1339</a>
+      </div>
+      <div class="foot-col">
+        <span class="label">Services</span>
+        <ul>
+          <li><a href="#services">Janitorial services</a></li>
+          <li><a href="#services">Floor care and maintenance</a></li>
+          <li><a href="#services">Carpet cleaning</a></li>
+          <li><a href="#services">Commercial window washing</a></li>
+          <li><a href="#services">Building maintenance</a></li>
+          <li><a href="#services">Security services</a></li>
+          <li><a href="#services">Light property maintenance</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <span class="label">Company</span>
+        <ul>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#why">Why EMCEE</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#area">Service area</a></li>
+          <li><a href="#quote">Get a Free Quote</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <span class="label">Contact</span>
+        <ul>
+          <li><address>1925 N Harlem Ave<br>Chicago, IL 60707</address></li>
+          <li><a href="tel:+12243851339">(224) 385-1339</a></li>
+          <li>Daily, weekly, monthly or on demand.<br>Emergency service available.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 EMCEE Building Services. All rights reserved.</span>
+      <span class="credit">Sample design by Northlane Web Studio. Sample photos from Pexels. <span class="tag">Sample</span></span>
+    </div>
+  </div>
+</footer>
+
+<div class="mbar" aria-label="Quick actions">
+  <a class="btn btn-ghost" href="tel:+12243851339">Call or Text</a>
+  <a class="btn" href="#quote">Free Quote</a>
+</div>
+
+<script>
+(function(){
+  // Mobile menu
+  var btn=document.querySelector('.menu-btn'),menu=document.getElementById('menu'),closeBtn=menu.querySelector('.menu-close');
+  function setMenu(open){
+    menu.classList.toggle('open',open);
+    menu.setAttribute('aria-hidden',open?'false':'true');
+    btn.setAttribute('aria-expanded',open?'true':'false');
+    document.body.style.overflow=open?'hidden':'';
+    (open?closeBtn:btn).focus();
+  }
+  btn.addEventListener('click',function(){setMenu(true)});
+  closeBtn.addEventListener('click',function(){setMenu(false)});
+  menu.addEventListener('click',function(e){if(e.target.tagName==='A')setMenu(false)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&menu.classList.contains('open'))setMenu(false)});
+
+  // Reveal on scroll
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els=document.querySelectorAll('.reveal');
+  if(reduce||!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')})}
+  else{
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}});
+    },{rootMargin:'0px 0px -8% 0px',threshold:.08});
+    els.forEach(function(e){io.observe(e)});
+  }
+
+  // Quote form (mock)
+  var form=document.getElementById('quote-form');
+  if(!form)return;
+  var fields=form.querySelectorAll('input[required],select[required]');
+  function check(el){
+    var v=(el.value||'').trim(),ok=!!v;
+    if(ok&&el.type==='email')ok=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+    if(ok&&el.type==='tel')ok=v.replace(/\D/g,'').length>=10;
+    var wrap=el.closest('.field');
+    wrap.classList.toggle('invalid',!ok);
+    if(!ok){el.setAttribute('aria-invalid','true');el.setAttribute('aria-describedby',el.id+'-err');el.closest('.field').querySelector('.err').setAttribute('role','alert')}
+    else{el.removeAttribute('aria-invalid');el.removeAttribute('aria-describedby')}
+    return ok;
+  }
+  fields.forEach(function(el){
+    el.addEventListener('blur',function(){check(el)});
+    el.addEventListener('input',function(){if(el.closest('.field').classList.contains('invalid'))check(el)});
+    el.addEventListener('change',function(){check(el)});
+  });
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var first=null;
+    fields.forEach(function(el){if(!check(el)&&!first)first=el});
+    if(first){first.focus();return}
+    var b=form.querySelector('button[type=submit]');b.disabled=true;b.textContent='Sending...';
+    var name=(form.querySelector('[name=name]').value||'').trim().split(' ')[0].replace(/[<>&"]/g,'');
+    setTimeout(function(){
+      form.innerHTML='<div class="thanks" role="status"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><h3>Thanks'+(name?', '+name:'')+'.</h3><p>Your quote request is in. Need it sooner? Call or text <a href="tel:+12243851339">(224) 385-1339</a>.</p><p><small>Sample form. Nothing was sent.</small></p></div>';
+    },700);
+  });
+})();
+</script>
+</body>
+</html>
